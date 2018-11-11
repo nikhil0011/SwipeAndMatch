@@ -9,12 +9,37 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    let topNavigationStackView = TopNavigationStackView()
+    let bottomButtonStackView = HomeBottomControlsStackView()
+    let blueView = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        blueView.backgroundColor = .white
+        setUpLayout()
     }
-
-
+    
+    fileprivate func setUpLayout() {
+        // Do any additional setup after loading the view, typically from a nib.
+        let overallStackView = UIStackView(arrangedSubviews: [topNavigationStackView,blueView,bottomButtonStackView])
+        overallStackView.translatesAutoresizingMaskIntoConstraints = false
+        overallStackView.axis = .vertical
+        view.addSubview(overallStackView)
+        overallStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor)
+    }
 }
+
+/*
+ *
+ *
+ fileprivate func returnPropertyMappedViews(colors: [UIColor]) -> Array<UIView> {
+ let arrayOfViews = colors.map{ (color) -> UIView in
+ let view = UIView()
+ view.backgroundColor = color
+ return view
+ }
+ return arrayOfViews
+ }
+ */
 
