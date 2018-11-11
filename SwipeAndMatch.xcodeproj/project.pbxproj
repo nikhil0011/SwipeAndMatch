@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		845499B92196FBF1001DF6BB /* HomeBottomControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845499B82196FBF1001DF6BB /* HomeBottomControlsStackView.swift */; };
 		845499BB2197695F001DF6BB /* TopNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845499BA2197695F001DF6BB /* TopNavigationStackView.swift */; };
+		845499BD21983CF8001DF6BB /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845499BC21983CF8001DF6BB /* CardView.swift */; };
 		84A5F16821960B76007CDFF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A5F16721960B76007CDFF3 /* AppDelegate.swift */; };
 		84A5F16A21960B76007CDFF3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A5F16921960B76007CDFF3 /* ViewController.swift */; };
 		84A5F16D21960B76007CDFF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A5F16B21960B76007CDFF3 /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		845499B82196FBF1001DF6BB /* HomeBottomControlsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomControlsStackView.swift; sourceTree = "<group>"; };
 		845499BA2197695F001DF6BB /* TopNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavigationStackView.swift; sourceTree = "<group>"; };
+		845499BC21983CF8001DF6BB /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		84A5F16421960B76007CDFF3 /* SwipeAndMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipeAndMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A5F16721960B76007CDFF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84A5F16921960B76007CDFF3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			children = (
 				845499B82196FBF1001DF6BB /* HomeBottomControlsStackView.swift */,
 				845499BA2197695F001DF6BB /* TopNavigationStackView.swift */,
+				845499BC21983CF8001DF6BB /* CardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				845499BD21983CF8001DF6BB /* CardView.swift in Sources */,
 				84A5F19921961009007CDFF3 /* UIView + Extensions.swift in Sources */,
 				84A5F17021960B76007CDFF3 /* SwipeAndMatch.xcdatamodeld in Sources */,
 				845499B92196FBF1001DF6BB /* HomeBottomControlsStackView.swift in Sources */,
