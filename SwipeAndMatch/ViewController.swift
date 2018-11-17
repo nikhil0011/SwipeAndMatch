@@ -38,7 +38,7 @@ class ViewController: UIViewController {
          *MARK:- StackView internallly assign a 'Z' Index position to all views inside it
          *HERE:- topNavigationStackView has lesser or intial Z index than cardeckview due which cardview comes over the topNavigationStackView
          *But card view is under bottomButtonStackView due to which it gets under the bottomButtonStackView
-         *To Overcome the same situation we brining card deck view above all views using below statement while user moves a card on screen
+         *To Overcome the same situation we are brining card deck view above all views using below statement while user moves a card on screen
          *Incase you need to get visual representation Pls comment next line : overallStackView.bringSubviewToFront(cardDeckView)
          */
         overallStackView.bringSubviewToFront(cardDeckView)

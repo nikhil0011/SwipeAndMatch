@@ -22,6 +22,7 @@ class CardView: UIView {
     
     fileprivate func handleGesutreEnded() {
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
+            //Default Value for transform ".identity"
             self.transform = .identity
         }, completion: {( _) in
             
@@ -29,11 +30,21 @@ class CardView: UIView {
     }
     
     fileprivate func handleGestureChange(_ gesture: UIPanGestureRecognizer) {
-        /*
-         *MARK:- "transform" Use this property to scale or rotate the view's frame rectangle within its superview's coordinate system. (To change the position of the view, modify the center property instead.) The default value of this property is CGAffineTransformIdentity.
-         */
         let transalation = gesture.translation(in: nil)
-        self.transform = CGAffineTransform(translationX: transalation.x, y: transalation.y)
+        /*
+         *MARK:- "transform" Use this property to scale,move or rotate the view's frame rectangle within its superview's coordinate system. (To change the position of the view, modify the center property instead.) The default value of this property is CGAffineTransformIdentity.
+         */
+        //Convert Raidans To degree
+        //MARK:- This CGAffineTransform(rotationAngle: 15) method takes value in Radians
+        let degree: CGFloat = transalation.x / 20
+        let angleInRadians = degree * .pi / 180
+        let rotationalTransformation = CGAffineTransform(rotationAngle: angleInRadians)
+        /*
+         *MARK:- translatedBy is helping to transalte x and y position of view while rotational transformation is occuring
+         **/
+        self.transform = rotationalTransformation.translatedBy(x: transalation.x, y: transalation.y)
+        
+//        self.transform = CGAffineTransform(translationX: transalation.x, y: transalation.y)
     }
     
     @objc fileprivate func handlePan(gesture: UIPanGestureRecognizer){
