@@ -14,7 +14,7 @@ class HomeBottomControlsStackView: UIStackView {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
         distribution = .fillEqually
-        heightAnchor.constraint(equalToConstant: 75).isActive = true
+        heightAnchor.constraint(equalToConstant: 90).isActive = true
 
         let buttonImagesArray: Array<UIImage> = [#imageLiteral(resourceName: "refresh_circle"),#imageLiteral(resourceName: "dismiss_circle"),#imageLiteral(resourceName: "super_like_circle"),#imageLiteral(resourceName: "like_circle"),#imageLiteral(resourceName: "boost_circle")]
         let buttonArray = buttonImagesArray.map{(image) -> UIView in

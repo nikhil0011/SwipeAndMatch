@@ -10,6 +10,8 @@ import UIKit
 
 class CardView: UIView {
     fileprivate let imageView: UIImageView = UIImageView(image: #imageLiteral(resourceName: "lady5c"))
+    fileprivate let thershold: CGFloat = 100
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(imageView)
@@ -20,12 +22,40 @@ class CardView: UIView {
         addGestureRecognizer(panGeusture)
     }
     
-    fileprivate func handleGesutreEnded() {
+    fileprivate func handleGesutreEnded(_ gesture: UIPanGestureRecognizer){
+        let transalation = gesture.translation(in: nil)
+        let transalationDirection: CGFloat = transalation.x > 0 ? 1 : -1
+        let shouldDismissCard = abs(transalation.x) > thershold
+        
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
             //Default Value for transform ".identity"
-            self.transform = .identity
+            if shouldDismissCard {
+                /*
+                 Option 1:(Buggy)
+                 * MARK:- Changing transformation via "self.transform.translatedBy" of view
+                 * will give you sudden Bumpy / jumpy effect of card getting removed.
+                 FOR REFERENCE PLEASE CHECK BELOW COMMENTED TWO LINES OF CODE.
+                 * --> let transform = self.transform.translatedBy(x: 1000, y: 0)
+                 * --> self.transform = transform
+                 */
+                /*
+                 Option 2:(Optimised)
+                 * MARK:- To Overcome this issuse we can apply change in frame paramteres
+                 *
+                 * MARK:- We are superview.frame rather can usual self.frame directly as while we are
+                 * Transforming our card on run time It's frame is getting effected it will return
+                 * you unexpected sizes every time.
+                 * Whereas, Superview Frame size is fixes throughout.
+                 */
+                self.frame = CGRect(x: transalationDirection * 1000, y: 0, width: self.superview!.frame.width, height: self.superview!.frame.height)
+                
+            }else{
+                self.transform = .identity
+            }
         }, completion: {( _) in
-            
+            print("Completion Block for handleGesutreEnded method called")
+            self.transform = .identity
+            self.frame = CGRect(x: 0, y: 0, width: self.superview!.frame.width, height: self.superview!.frame.height)
         })
     }
     
@@ -43,18 +73,20 @@ class CardView: UIView {
          *MARK:- translatedBy is helping to transalte x and y position of view while rotational transformation is occuring
          **/
         self.transform = rotationalTransformation.translatedBy(x: transalation.x, y: transalation.y)
+        /*
+         *MARK:- Only Moving the position with below line
+         self.transform = CGAffineTransform(translationX: transalation.x, y: transalation.y)
+         */
         
-//        self.transform = CGAffineTransform(translationX: transalation.x, y: transalation.y)
     }
     
     @objc fileprivate func handlePan(gesture: UIPanGestureRecognizer){
-        
         switch gesture.state{
         case .changed:
             handleGestureChange(gesture)
             break
         case .ended:
-            handleGesutreEnded()
+            handleGesutreEnded(gesture)
             break
         default:
             break
@@ -64,6 +96,4 @@ class CardView: UIView {
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-
 }
