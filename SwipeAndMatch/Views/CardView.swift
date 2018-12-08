@@ -9,9 +9,18 @@
 import UIKit
 
 class CardView: UIView {
-    let imageView: UIImageView = UIImageView(image: #imageLiteral(resourceName: "lady5c"))
+    var cardViewModel: CardViewModel!{
+        didSet{
+            imageView.image = UIImage(named: cardViewModel.imageName)
+            informationLabel.attributedText = cardViewModel.attributedText
+            informationLabel.textAlignment = cardViewModel.textAlignment
+        }
+    }
+    
+    fileprivate let imageView: UIImageView = UIImageView(image: #imageLiteral(resourceName: "lady5c"))
     fileprivate let thershold: CGFloat = 100
-    let informationLabel: UILabel =  UILabel()
+    fileprivate let informationLabel: UILabel =  UILabel()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(imageView)
