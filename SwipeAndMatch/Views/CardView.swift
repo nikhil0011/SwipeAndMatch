@@ -16,13 +16,12 @@ class CardView: UIView {
             informationLabel.textAlignment = cardViewModel.textAlignment
         }
     }
-    
+    let gradientLayer = CAGradientLayer()
     fileprivate let imageView: UIImageView = UIImageView(image: #imageLiteral(resourceName: "lady5c"))
     fileprivate let thershold: CGFloat = 100
     fileprivate let informationLabel: UILabel =  UILabel()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    fileprivate func setupLayout() {
         addSubview(imageView)
         addSubview(informationLabel)
         let informationLabelInset = UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 0)
@@ -31,11 +30,26 @@ class CardView: UIView {
         informationLabel.numberOfLines = 0
         informationLabel.font = UIFont.systemFont(ofSize: 20, weight: .heavy)
         imageView.fillSuperview()
+        setupGradientLayer()
         clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         layer.cornerRadius = 10
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupLayout()
         let panGeusture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(gesture:)))
         addGestureRecognizer(panGeusture)
+    }
+
+    func setupGradientLayer(){
+        gradientLayer.colors = [UIColor.clear.cgColor,UIColor.black.cgColor]
+        gradientLayer.locations = [0.5,1.3]
+        layer.addSublayer(gradientLayer)
+    }
+    override func layoutSubviews() {
+        gradientLayer.frame = self.frame
     }
     
     fileprivate func handleGesutreEnded(_ gesture: UIPanGestureRecognizer){
@@ -100,6 +114,11 @@ class CardView: UIView {
     
     @objc fileprivate func handlePan(gesture: UIPanGestureRecognizer){
         switch gesture.state{
+        case .began:
+            //Remove all animation before you begin any new animation as multiple animation are going on at individual element itself.
+            superview?.subviews.forEach({ (subview) in
+                subview.layer.removeAllAnimations()
+            })
         case .changed:
             handleGestureChange(gesture)
             break

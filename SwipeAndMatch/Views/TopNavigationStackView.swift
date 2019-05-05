@@ -12,6 +12,7 @@ class TopNavigationStackView: UIStackView {
     let settingButton = UIButton(type: .system)
     let messageButton = UIButton(type: .system)
     let fireIcon = UIImageView(image: #imageLiteral(resourceName: "app_icon"))
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         fireIcon.contentMode = .scaleAspectFit
@@ -33,5 +34,4 @@ class TopNavigationStackView: UIStackView {
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
