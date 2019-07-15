@@ -30,19 +30,20 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         topNavigationStackView.settingButton.addTarget(self, action: #selector(handleSettings), for: .touchUpInside)
+        topNavigationStackView.messageButton.addTarget(self, action: #selector(handleInfoTap), for: .touchUpInside)
         setUpLayout()
         setupDummyCard()
     }
     
     @objc func handleSettings(){
-        print("Show registration page")
-        
         present(RegistrationController(), animated: true, completion: nil)
     }
     
+    @objc func handleInfoTap(){
+        present(UserDetailViewController(), animated: true, completion: nil)
+    }
+    
     fileprivate func setupDummyCard(){
-//        (0..<10).forEach{(_) in
-//        }        
         cardViewModel.forEach{(cardVM) in
             let cardView = CardView(frame: .zero)
             cardView.cardViewModel = cardVM

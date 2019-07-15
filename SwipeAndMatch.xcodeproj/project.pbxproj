@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3120E3DC22DC513000A155DF /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3120E3DB22DC513000A155DF /* RegistrationViewController.swift */; };
 		3120E3DE22DC572E00A155DF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3120E3DD22DC572E00A155DF /* CustomTextField.swift */; };
+		3120E3E022DC6C3F00A155DF /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3120E3DF22DC6C3F00A155DF /* UserDetailViewController.swift */; };
 		841D1C7921BC408100C99E07 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841D1C7821BC408100C99E07 /* CardViewModel.swift */; };
 		841D1C7B21BC581B00C99E07 /* Advertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841D1C7A21BC581B00C99E07 /* Advertiser.swift */; };
 		8439AD0621A17AD5007A7FE2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8439AD0521A17AD5007A7FE2 /* User.swift */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		3120E3DB22DC513000A155DF /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		3120E3DD22DC572E00A155DF /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		3120E3DF22DC6C3F00A155DF /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		841D1C7821BC408100C99E07 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		841D1C7A21BC581B00C99E07 /* Advertiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertiser.swift; sourceTree = "<group>"; };
 		8439AD0521A17AD5007A7FE2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			children = (
 				84A5F16921960B76007CDFF3 /* HomeViewController.swift */,
 				3120E3DB22DC513000A155DF /* RegistrationViewController.swift */,
+				3120E3DF22DC6C3F00A155DF /* UserDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 			files = (
 				841D1C7B21BC581B00C99E07 /* Advertiser.swift in Sources */,
 				845499BD21983CF8001DF6BB /* CardView.swift in Sources */,
+				3120E3E022DC6C3F00A155DF /* UserDetailViewController.swift in Sources */,
 				84A5F19921961009007CDFF3 /* UIView + Extensions.swift in Sources */,
 				3120E3DC22DC513000A155DF /* RegistrationViewController.swift in Sources */,
 				84A5F17021960B76007CDFF3 /* SwipeAndMatch.xcdatamodeld in Sources */,
