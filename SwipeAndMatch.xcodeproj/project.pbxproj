@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3120E3DC22DC513000A155DF /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3120E3DB22DC513000A155DF /* RegistrationViewController.swift */; };
+		3120E3DE22DC572E00A155DF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3120E3DD22DC572E00A155DF /* CustomTextField.swift */; };
 		841D1C7921BC408100C99E07 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841D1C7821BC408100C99E07 /* CardViewModel.swift */; };
 		841D1C7B21BC581B00C99E07 /* Advertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841D1C7A21BC581B00C99E07 /* Advertiser.swift */; };
 		8439AD0621A17AD5007A7FE2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8439AD0521A17AD5007A7FE2 /* User.swift */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3120E3DB22DC513000A155DF /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		3120E3DD22DC572E00A155DF /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		841D1C7821BC408100C99E07 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		841D1C7A21BC581B00C99E07 /* Advertiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertiser.swift; sourceTree = "<group>"; };
 		8439AD0521A17AD5007A7FE2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -94,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				84A5F16921960B76007CDFF3 /* HomeViewController.swift */,
+				3120E3DB22DC513000A155DF /* RegistrationViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -121,6 +126,7 @@
 				845499B82196FBF1001DF6BB /* HomeBottomControlsStackView.swift */,
 				845499BA2197695F001DF6BB /* TopNavigationStackView.swift */,
 				845499BC21983CF8001DF6BB /* CardView.swift */,
+				3120E3DD22DC572E00A155DF /* CustomTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -315,10 +321,12 @@
 				841D1C7B21BC581B00C99E07 /* Advertiser.swift in Sources */,
 				845499BD21983CF8001DF6BB /* CardView.swift in Sources */,
 				84A5F19921961009007CDFF3 /* UIView + Extensions.swift in Sources */,
+				3120E3DC22DC513000A155DF /* RegistrationViewController.swift in Sources */,
 				84A5F17021960B76007CDFF3 /* SwipeAndMatch.xcdatamodeld in Sources */,
 				845499B92196FBF1001DF6BB /* HomeBottomControlsStackView.swift in Sources */,
 				8439AD0621A17AD5007A7FE2 /* User.swift in Sources */,
 				845499BB2197695F001DF6BB /* TopNavigationStackView.swift in Sources */,
+				3120E3DE22DC572E00A155DF /* CustomTextField.swift in Sources */,
 				84A5F16A21960B76007CDFF3 /* HomeViewController.swift in Sources */,
 				84A5F16821960B76007CDFF3 /* AppDelegate.swift in Sources */,
 				841D1C7921BC408100C99E07 /* CardViewModel.swift in Sources */,
