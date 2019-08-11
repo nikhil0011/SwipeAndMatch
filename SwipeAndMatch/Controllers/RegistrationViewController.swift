@@ -25,11 +25,13 @@ class RegistrationController: UIViewController {
     let fullNameTextField: CustomTextField = {
         let tf = CustomTextField(padding: 24, height: 44)
         tf.placeholder = "Enter full name"
+        tf.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         tf.backgroundColor = .white
         return tf
     }()
     let emailTextField: CustomTextField = {
         let tf = CustomTextField(padding: 24, height: 44)
+        tf.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         tf.placeholder = "Enter email"
         tf.keyboardType = .emailAddress
         tf.backgroundColor = .white
@@ -38,6 +40,7 @@ class RegistrationController: UIViewController {
     let passwordTextField: CustomTextField = {
         let tf = CustomTextField(padding: 24, height: 44)
         tf.placeholder = "Enter password"
+        tf.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         tf.isSecureTextEntry = true
         tf.backgroundColor = .white
         return tf
@@ -53,12 +56,23 @@ class RegistrationController: UIViewController {
         button.layer.cornerRadius = 22
         return button
     }()
+    
+    lazy var verticalStackView: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [
+            fullNameTextField,
+            emailTextField,
+            passwordTextField,
+            registerButton
+            ])
+        sv.axis = .vertical
+        sv.spacing = 8
+        sv.distribution = .fillEqually
+        return sv
+    }()
+    
     lazy var stackView = UIStackView(arrangedSubviews: [
         selectPhotoButton,
-        fullNameTextField,
-        emailTextField,
-        passwordTextField,
-        registerButton
+        verticalStackView
         ])
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,8 +80,30 @@ class RegistrationController: UIViewController {
         setupLayout()
         setupNotificationObserver()
         setupTapGesture()
+        setupRegistrationViewModel()
     }
+    var registrationViewModel = RegistrationViewModel()
     
+    
+    func setupRegistrationViewModel(){
+        registrationViewModel.isFormValidObserver = { (validForm) in
+            print("Is form valid---- \(validForm)")
+            self.registerButton.isEnabled = validForm
+            self.registerButton.backgroundColor = validForm ? #colorLiteral(red: 0.8235294118, green: 0, blue: 0.3254901961, alpha: 1) : .gray
+            self.registerButton.setTitleColor(validForm ? .white : .darkGray, for: .normal)
+        }
+    }
+    @objc func handleTextChange(textField: UITextField)
+    {
+        if textField == fullNameTextField{
+            registrationViewModel.fullName = textField.text
+        }else if textField == emailTextField{
+            registrationViewModel.email = textField.text
+        }else{
+            registrationViewModel.password = textField.text
+        }
+        
+    }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         //Otherwise you will have a retain cycle as NotificationCenter is observing or is in cycle with self
@@ -78,14 +114,15 @@ class RegistrationController: UIViewController {
     }
     
     @objc func dismissViewOnTap(){
-            self.view.endEditing(true)
-
+        self.view.endEditing(true)
+        
     }
     
     func setupNotificationObserver(){
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+    
     @objc func handleKeyboardWillShow(notification: NSNotification){
         debugPrint("Keyboard Will Show",notification)
         guard let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else{
@@ -108,17 +145,30 @@ class RegistrationController: UIViewController {
             self.view.transform = .identity
         }, completion: nil)
     }
+    //it noties when ever is changes in size classes of view controller (which generally happens when orientation updates
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if traitCollection.verticalSizeClass == .compact {
+            stackView.axis = .horizontal
+        }else{
+            stackView.axis = .vertical
+        }
+    }
     
     func setupLayout(){
-        
         view.addSubview(stackView)
-        stackView.axis = .vertical
+        selectPhotoButton.widthAnchor.constraint(equalToConstant: 275).isActive = true
+        stackView.axis = .horizontal
         stackView.spacing = 8
         stackView.anchor(top: nil, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 50, bottom: 0, right: 50))
         stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
+    let gradientLayer = CAGradientLayer()
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        gradientLayer.frame = view.bounds
+    }
     fileprivate func setupGradientLayer() {
-        let gradientLayer = CAGradientLayer()
         let topColor = #colorLiteral(red: 0.9921568627, green: 0.3568627451, blue: 0.3725490196, alpha: 1)
         let bottomColor = #colorLiteral(red: 0.8980392157, green: 0, blue: 0.4470588235, alpha: 1)
         // make sure to user cgColor

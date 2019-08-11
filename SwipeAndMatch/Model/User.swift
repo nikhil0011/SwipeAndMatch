@@ -22,6 +22,3 @@ struct User: ProduceCardViewModel {
         return viewModel
     }
 }
-//469
-//20720
-//21007

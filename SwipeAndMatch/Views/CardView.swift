@@ -117,7 +117,6 @@ class CardView: UIView {
                  * Whereas, Superview Frame size is fixes throughout.
                  */
                 self.frame = CGRect(x: transalationDirection * 1000, y: 0, width: self.superview!.frame.width, height: self.superview!.frame.height)
-                
             }else{
                 self.transform = .identity
             }
